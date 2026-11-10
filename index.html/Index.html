@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>UJENZI CONNECTION - App</title>
+<meta name="theme-color" content="#111111">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="UJENZI">
+<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/1532/1532919.png">
+<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1532/1532919.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f4f4f4;color:#222;padding-bottom:95px;transition:.3s}
+body.dark{background:#111;color:#fff}
+body.dark .box{background:#222;color:#fff}
+body.dark .card{background:#222;color:#fff}
+body.dark input,body.dark select,body.dark textarea{background:#333;color:#fff;border-color:#444}
+.header{background:#111;color:#fff;padding:18px 15px;text-align:center;position:sticky;top:0;z-index:10}
+.header h1{font-size:24px;color:#FFC107}
+.header p{font-size:12px;margin-top:4px}
+.top-btns{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.top-btns button{padding:6px 12px;border-radius:20px;border:none;font-weight:bold;font-size:12px;cursor:pointer}
+.badge{display:inline-block;background:#25D366;color:#fff;padding:5px 12px;border-radius:20px;font-size:12px;margin-top:8px;font-weight:bold}
+.install-bar{background:#FFC107;padding:12px 15px;text-align:center}
+.install-bar button{background:#111;color:#fff;border:none;padding:10px 18px;border-radius:20px;font-weight:bold;margin-top:6px;width:100%}
+.box{background:#fff;margin:12px;padding:16px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.box h2{font-size:19px;margin-bottom:10px}
+input,select,textarea{width:100%;padding:12px;margin:6px 0;border:1px solid #ddd;border-radius:9px;font-size:15px}
+.btn{width:100%;padding:14px;border:none;border-radius:9px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:6px}
+.btn-green{background:#25D366;color:#fff}
+.btn-yellow{background:#FFC107;color:#111}
+.btn-blue{background:#007bff;color:#fff}
+.btn-red{background:#ff4444;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.card img{width:100%;height:130px;object-fit:cover}
+.card-body{padding:10px}
+.verified{color:#25D366;font-weight:bold;font-size:12px}
+.stars{color:#FFC107;font-size:12px}
+.gallery img{width:100%;height:130px;object-fit:cover;border-radius:10px}
+.security{background:#FFF3CD;border:1px solid #FFC107}
+body.dark .security{background:#333;border-color:#FFC107}
+.review{border-bottom:1px solid #eee;padding:8px 0;font-size:14px}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#111;color:#fff;display:flex;justify-content:space-around;padding:12px 0;z-index:20}
+.bottom-nav div{text-align:center;font-size:12px;cursor:pointer}
+.bottom-nav b{font-size:16px}
+.footer{text-align:center;padding:15px;font-size:12px;color:#777}
+.notif{background:#25D366;color:#fff;padding:10px;text-align:center;font-size:14px;display:none}
+.gps-box{background:#E3F2FD;border:1px solid #007bff;padding:12px;border-radius:10px;margin-top:10px;font-size:14px;line-height:1.6}
+body.dark .gps-box{background:#1a2a3a}
+.distance{background:#25D366;color:#fff;padding:4px 10px;border-radius:15px;font-size:12px;font-weight:bold;display:inline-block}
+.map-link{color:#007bff;font-weight:bold;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<div class="notif" id="notif">🔔 Kazi Mpya Imepokelewa!</div>
+
+<div class="header">
+<h1>🔨 UJENZI CONNECTION</h1>
+<p id="slogan">TAFUTA FUNDI WA KUAMINIKA LEO!</p>
+<p>Rangi • Umeme • Bomba • Ujenzi • Vigae</p>
+<div class="top-btns">
+<button onclick="toggleDark()">🌙 Dark Mode</button>
+<button onclick="toggleLang()">🗣️ EN / SW</button>
+<button onclick="getLocation()">📍 GPS - Niko Wapi?</button>
+</div>
+<span class="badge">✅ Fundi Wote Wamehakikiwa</span>
+<div id="gpsHeader" style="display:none;margin-top:10px;background:#222;padding:10px;border-radius:10px;text-align:left;font-size:13px;line-height:1.6"></div>
+</div>
+
+<div class="install-bar">
+<b>📲 Install App ya UJENZI CONNECTION</b><br>
+<button onclick="installApp()">INSTALL APP SASA ⬇️</button>
+<p style="font-size:11px;margin-top:5px">iPhone: Safari → Share ⬆️ → Add to Home Screen</p>
+</div>
+
+<div class="box" id="mteja">
+<h2 id="t1">1. TAFUTA FUNDI - BOOKING + GPS</h2>
+<button class="btn btn-blue" onclick="getLocation()">📍 CHUKUA LOCATION YANGU KIOTOMATIKI</button>
+<div id="mtejaLocation" class="gps-box" style="display:none"></div>
+<input id="jinaMteja" placeholder="Jina lako">
+<select id="ujuziMteja"><option>Rangi</option><option>Umeme</option><option>Bomba / Plumbing</option><option>Ujenzi</option><option>Vigae / Tiles</option><option>Seremala</option></select>
+<input id="eneoMteja" placeholder="Eneo lako - au bonyeza GPS juu itajaza yenyewe">
+<label style="font-size:13px">📅 Chagua Tarehe Fundi Aje:</label>
+<input type="date" id="tarehe">
+<label style="font-size:13px">🕐 Saa:</label>
+<select id="saa"><option>Asubuhi 8-11</option><option>Mchana 11-2</option><option>Jioni 2-5</option><option>Jioni 5-7</option></select>
+<textarea id="maelezoMteja" placeholder="Eleza kazi unayotaka..."></textarea>
+<button class="btn btn-green" onclick="tumaMteja()">BOOK FUNDI - WHATSAPP 📲</button>
+<button class="btn btn-blue" onclick="callFundi()">📞 PIGA SIMU SASA - 0653998202</button>
+</div>
+
+<div class="box">
+<h2>📍 MAFUNDI WALIO KARIBU NAWE</h2>
+<p style="font-size:13px;color:#666">Bonyeza GPS juu kwanza, halafu hapa utaona nani yuko karibu zaidi nawe na umbali wake.</p>
+<div id="nearbyList" style="margin-top:10px">
+<p style="font-size:14px;text-align:center;color:#888;padding:10px">👆 Bonyeza "📍 CHUKUA LOCATION YANGU" kuona mafundi walio karibu nawe</p>
+</div>
+<button class="btn btn-blue" onclick="getLocation()">🔄 SASISHA MAFUNDI WALIO KARIBU</button>
+</div>
+
+<div class="box" id="mafundi">
+<h2>⭐ MAFUNDI WETU - NA LOCATION ZAO</h2>
+<p style="font-size:13px;color:#666;margin-bottom:10px">Bonyeza fundi kuona Profile + Location yake + Umbali kutoka kwako.</p>
+<div class="grid">
+<div class="card" onclick="showProfile('Isack M.','Rangi','Mikocheni','5 Miaka','0653998202',-6.771,-39.231,'Mikocheni, Dar es Salaam')"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500"><div class="card-body"><b>Isack M.</b><br><span class="verified">✅ Aliyehakikiwa</span><br>🎨 Fundi wa Rangi<br>📍 Mikocheni<br><span class="stars">⭐⭐⭐⭐⭐ (12 Kazi)</span><br><span class="distance" id="dist-Isack">📍 Mikocheni</span></div></div>
+<div class="card" onclick="showProfile('Juma K.','Umeme','Kinondoni','7 Miaka','0653998202',-6.792,-39.268,'Kinondoni, Dar es Salaam')"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500"><div class="card-body"><b>Juma K.</b><br><span class="verified">✅ Aliyehakikiwa</span><br>⚡ Fundi wa Umeme<br>📍 Kinondoni<br><span class="stars">⭐⭐⭐⭐⭐ (18 Kazi)</span><br><span class="distance" id="dist-Juma">📍 Kinondoni</span></div></div>
+<div class="card" onclick="showProfile('Baraka S.','Bomba','Ilala','4 Miaka','0653998202',-6.814,-39.280,'Ilala, Dar es Salaam')"><img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=500"><div class="card-body"><b>Baraka S.</b><br><span class="verified">✅ Aliyehakikiwa</span><br>🔧 Fundi wa Bomba<br>📍 Ilala<br><span class="stars">⭐⭐⭐⭐ (9 Kazi)</span><br><span class="distance" id="dist-Baraka">📍 Ilala</span></div></div>
+<div class="card" onclick="showProfile('Salimu B.','Ujenzi','Mbezi','10 Miaka','0653998202',-6.740,-39.180,'Mbezi, Dar es Salaam')"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=500"><div class="card-body"><b>Salimu B.</b><br><span class="verified">✅ Aliyehakikiwa</span><br>🏗️ Fundi wa Ujenzi<br>📍 Mbezi<br><span class="stars">⭐⭐⭐⭐⭐ (25 Kazi)</span><br><span class="distance" id="dist-Salimu">📍 Mbezi</span></div></div>
+</div>
+</div>
+
+<div class="box" id="profileBox" style="display:none">
+<h2 id="profileName">👤 PROFILE YA FUNDI</h2>
+<p id="profileInfo" style="font-size:14px;line-height:1.8"></p>
+<div id="profileLocation" class="gps-box"></div>
+<div class="grid gallery"><img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=500"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=500"></div>
+<button class="btn btn-green" onclick="bookThisFundi()">BOOK HUYU FUNDI 📲</button>
+<button class="btn btn-blue" onclick="callFundi()">📞 MPIGIE SIMU</button>
+<button class="btn btn-yellow" onclick="openFundiMap()">🗺️ ONA FUNDI KWENYE RAMANI</button>
+</div>
+
+<div class="box">
+<h2>📸 KAZI ZETU</h2>
+<div class="grid gallery"><img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=500"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=500"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500"></div>
+</div>
+
+<div class="box">
+<h2>⭐ MAONI YA WATEJA</h2>
+<div id="reviews">
+<div class="review"><b>Mama Asha - Mikocheni</b> ⭐⭐⭐⭐⭐<br>"Fundi alikuja kwa wakati, kazi safi sana. Nampendekeza!"</div>
+<div class="review"><b>John - Kinondoni</b> ⭐⭐⭐⭐⭐<br>"Fundi alikuwa karibu nami, kafika dakika 15 tu!"</div>
+<div class="review"><b>Neema - Ilala</b> ⭐⭐⭐⭐<br>"Kazi nzuri ya bomba, maji hayatoki tena."</div>
+</div>
+<input id="jinaReview" placeholder="Jina lako">
+<select id="nyota"><option>⭐⭐⭐⭐⭐ - Nzuri Sana</option><option>⭐⭐⭐⭐ - Nzuri</option><option>⭐⭐⭐ - Wastani</option></select>
+<textarea id="maoni" placeholder="Andika maoni yako..."></textarea>
+<button class="btn btn-yellow" onclick="addReview()">TUMA MAONI YANGU ⭐</button>
+</div>
+
+<div class="box security" id="fundi">
+<h2>2. WEWE NI FUNDI? JISAJILI + LOCATION YAKO</h2>
+<p style="font-size:14px;margin-bottom:10px"><b>🔒 SECURITY:</b> Baada ya kujisajili, utatumiwa WhatsApp utume <b>Picha ya NIDA / Cheti</b>. Location yako itasaidia wateja waliopo karibu nawe wakupate haraka.</p>
+<input id="jinaFundi" placeholder="Jina lako kamili">
+<input id="simuFundi" placeholder="Namba ya simu - mfano 0653...">
+<select id="ujuziFundi"><option>Rangi</option><option>Umeme</option><option>Bomba</option><option>Ujenzi</option><option>Vigae</option><option>Seremala</option></select>
+<input id="eneoFundi" placeholder="Eneo unalofanyia kazi">
+<button class="btn btn-blue" onclick="getFundiLocation()">📍 CHUKUA LOCATION YANGU (Kama Fundi)</button>
+<div id="fundiLocationBox" class="gps-box" style="display:none"></div>
+<button class="btn btn-yellow" onclick="tumaFundi()">JISAJILI KAMA FUNDI ✅</button>
+</div>
+
+<div class="box">
+<h2>🛡️ Kwa Nini Utuamini?</h2>
+<p>✅ <b>Fundi Aliyehakikiwa</b> - Kila fundi ana NIDA iliyothibitishwa<br><br>✅ <b>Fundi Aliye Karibu Nawe</b> - GPS inakuonyesha aliye karibu zaidi<br><br>✅ <b>Picha za Kazi Halisi</b><br><br>✅ <b>Hakuna Malipo Kabla</b></p>
+</div>
+
+<div class="footer">UJENZI CONNECTION © 2026 - Dar es Salaam<br><b>WhatsApp: 0653998202</b></div>
+
+<div class="bottom-nav">
+<div onclick="document.getElementById('mteja').scrollIntoView({behavior:'smooth'})"><b>🏠</b><br>Nyumbani</div>
+<div onclick="document.getElementById('mafundi').scrollIntoView({behavior:'smooth'})"><b>⭐</b><br>Mafundi</div>
+<div onclick="document.getElementById('fundi').scrollIntoView({behavior:'smooth'})"><b>🔨</b><br>Jisajili</div>
+<div onclick="installApp()"><b>📲</b><br>Install</div>
+</div>
+
+<script>
+const WHATSAPP = "255653998202";
+let deferredPrompt = null;
+let langSw = true;
+let currentFundi = "";
+let currentFundiLat = 0, currentFundiLng = 0, currentFundiAddr = "";
+let userLat = null, userLng = null, userAddr = "Haijulikani";
+let fundiLat = null, fundiLng = null, fundiAddr = "";
+
+const mafundiList = [
+ {jina:"Isack M.", ujuzi:"Rangi", eneo:"Mikocheni", lat:-6.771, lng:39.231},
+ {jina:"Juma K.", ujuzi:"Umeme", eneo:"Kinondoni", lat:-6.792, lng:39.268},
+ {jina:"Baraka S.", ujuzi:"Bomba", eneo:"Ilala", lat:-6.814, lng:39.280},
+ {jina:"Salimu B.", ujuzi:"Ujenzi", eneo:"Mbezi", lat:-6.740, lng:39.180}
+];
+
+const manifest = {name:"UJENZI CONNECTION",short_name:"UJENZI",start_url:".",display:"standalone",background_color:"#111111",theme_color:"#FFC107",icons:[{src:"https://cdn-icons-png.flaticon.com/512/1532/1532919.png",sizes:"192x192",type:"image/png"},{src:"https://cdn-icons-png.flaticon.com/512/1532/1532919.png",sizes:"512x512",type:"image/png",purpose:"any"},{src:"https://cdn-icons-png.flaticon.com/512/1532/1532919.png",sizes:"512x512",type:"image/png",purpose:"maskable"}]};
+const blob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
+const link = document.createElement('link'); link.rel='manifest'; link.href=URL.createObjectURL(blob); document.head.appendChild(link);
+window.addEventListener('beforeinstallprompt', e=>{e.preventDefault(); deferredPrompt=e;});
+function installApp(){ if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt.userChoice.then(res=>{ if(res.outcome==='accepted') alert('Asante! App imeshawekwa ✅'); deferredPrompt=null; }); } else { alert('ANDROID: ⋮ → Add to Home screen\niPHONE: SAFARI → Share ⬆️ → Add to Home Screen'); } }
+function showNotif(){ let n=document.getElementById('notif'); n.style.display='block'; setTimeout(()=>n.style.display='none',4000); }
+function toggleDark(){ document.body.classList.toggle('dark'); }
+function toggleLang(){ langSw=!langSw; if(langSw){ document.getElementById('slogan').innerText='TAFUTA FUNDI WA KUAMINIKA LEO!'; document.getElementById('t1').innerText='1. TAFUTA FUNDI - BOOKING + GPS'; } else { document.getElementById('slogan').innerText='FIND A TRUSTED FUNDI TODAY!'; document.getElementById('t1').innerText='1. FIND A FUNDI - BOOKING + GPS'; } }
+
+function calcDistance(lat1,lon1,lat2,lon2){
+  const R=6371; const dLat=(lat2-lat1)*Math.PI/180; const dLon=(lon2-lon1)*Math.PI/180;
+  const a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)*Math.sin(dLon/2);
+  const c=2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a)); return (R*c).toFixed(1);
+}
+
+function getLocation(){
+  if(!navigator.geolocation){ alert('Simu yako haiungi mkono GPS. Tafadhali andika eneo lako mwenyewe.'); return; }
+  document.getElementById('gpsHeader').style.display='block';
+  document.getElementById('gpsHeader').innerHTML='📍 Inatafuta location yako... Tafadhali bonyeza ALLOW / RUHUSU ikikutokea juu.';
+  document.getElementById('mtejaLocation').style.display='block';
+  document.getElementById('mtejaLocation').innerHTML='📍 Inatafuta... Ruhusu GPS (Allow) ikikutokea.';
+
+  navigator.geolocation.getCurrentPosition(async (pos)=>{
+    userLat = pos.coords.latitude; userLng = pos.coords.longitude;
+    // Jaribu kupata jina la mtaa kutoka kwenye coordinates
+    try{
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${userLat}&lon=${userLng}`);
+      const data = await res.json();
+      userAddr = data.display_name ? data.display_name.split(',').slice(0,3).join(',') : 'Dar es Salaam';
+    }catch(e){ userAddr = 'Dar es Salaam, Tanzania'; }
+
+    document.getElementById('eneoMteja').value = userAddr;
+    const html = `<b>📍 LOCATION YAKO (MTEJA):</b><br>📌 ${userAddr}<br>🌐 Lat: ${userLat.toFixed(5)}, Lng: ${userLng.toFixed(5)}<br><a class="map-link" href="https://www.google.com/maps?q=${userLat},${userLng}" target="_blank">🗺️ Ona Location Yangu Kwenye Ramani</a>`;
+    document.getElementById('mtejaLocation').innerHTML = html;
+    document.getElementById('gpsHeader').innerHTML = `📍 <b>Uko:</b> ${userAddr}<br>✅ Sasa unaona mafundi walio karibu nawe hapa chini`;
+    updateNearby();
+    showNotif();
+  }, (err)=>{
+    let msg = 'Ruhusu GPS kwanza! Nenda Settings > Safari > Location > Allow. Au andika eneo lako mwenyewe hapa chini.';
+    if(err.code===1) msg = '❌ Umekataa GPS! Bonyeza tena na uchague ALLOW. Au nenda Settings > Safari > Location > Allow';
+    if(err.code===2) msg = '❌ GPS haipatikani. Washa Location kwenye simu yako.';
+    if(err.code===3) msg = '⏳ GPS inachelewa. Jaribu tena.';
+    document.getElementById('mtejaLocation').innerHTML = msg + '<br><br><b>MUHIMU:</b> GPS haifanyi kazi ndani ya CodePen Preview. Fungua App kwenye <b>Safari</b> (link ya Full Page) ndiyo GPS ifanye kazi.';
+    document.getElementById('gpsHeader').innerHTML = msg;
+    alert(msg);
+  }, {enableHighAccuracy:true, timeout:15000, maximumAge:0});
+}
+
+function getFundiLocation(){
+  if(!navigator.geolocation){ alert('Simu yako haiungi mkono GPS'); return; }
+  document.getElementById('fundiLocationBox').style.display='block';
+  document.getElementById('fundiLocationBox').innerHTML='📍 Inatafuta location yako kama Fundi... Ruhusu GPS.';
+  navigator.geolocation.getCurrentPosition(async (pos)=>{
+    fundiLat = pos.coords.latitude; fundiLng = pos.coords.longitude;
+    try{
+      const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${fundiLat}&lon=${fundiLng}`);
+      const data = await res.json();
+      fundiAddr = data.display_name ? data.display_name.split(',').slice(0,3).join(',') : 'Dar es Salaam';
+    }catch(e){ fundiAddr = 'Dar es Salaam'; }
+    document.getElementById('eneoFundi').value = fundiAddr;
+    document.getElementById('fundiLocationBox').innerHTML = `<b>📍 LOCATION YAKO KAMA FUNDI:</b><br>📌 ${fundiAddr}<br>🌐 ${fundiLat.toFixed(5)}, ${fundiLng.toFixed(5)}<br>✅ Wateja walio karibu nawe watakuona kwanza!`;
+  }, ()=>{ alert('Ruhusu GPS ili tuchukue location yako'); });
+}
+
+function updateNearby(){
+  if(userLat===null) return;
+  let sorted = mafundiList.map(f=>{ return {...f, dist: parseFloat(calcDistance(userLat,userLng,f.lat,f.lng))}; }).sort((a,b)=>a.dist-b.dist);
+  let html = '';
+  sorted.forEach(f=>{
+    html += `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee"><div><b>${f.jina}</b> - ${f.ujuzi}<br><span style="font-size:12px">📍 ${f.eneo}</span></div><div style="text-align:right"><span class="distance">${f.dist} km kutoka kwako</span><br><a class="map-link" style="font-size:12px" href="https://www.google.com/maps?q=${f.lat},${f.lng}" target="_blank">Ona Ramani</a></div></div>`;
+  });
+  html += `<p style="font-size:12px;color:#25D366;margin-top:8px">✅ Fundi wa karibu zaidi ni <b>${sorted[0].jina}</b> - yuko ${sorted[0].dist}km tu kutoka kwako!</p>`;
+  document.getElementById('nearbyList').innerHTML = html;
+  // Sasisha distance kwenye cards
+  sorted.forEach(f=>{
+    let el = document.getElementById('dist-'+f.jina.split(' ')[0]);
+    if(el) el.innerText = `📍 ${f.dist} km kutoka kwako`;
+  });
+}
+
+function showProfile(jina,ujuzi,eneo,uzoefu,simu,lat,lng,addr){
+  currentFundi=jina; currentFundiLat=lat; currentFundiLng=lng; currentFundiAddr=addr;
+  document.getElementById('profileBox').style.display='block';
+  document.getElementById('profileName').innerText='👤 '+jina+' - '+ujuzi;
+  let distText = userLat!==null ? `<br><b>Umbali kutoka kwako:</b> <span class="distance">${calcDistance(userLat,userLng,lat,lng)} km</span>` : '<br><i>Bonyeza GPS juu ili uone umbali kutoka kwako</i>';
+  document.getElementById('profileInfo').innerHTML='<b>Ujuzi:</b> '+ujuzi+'<br><b>Eneo:</b> '+eneo+'<br><b>Uzoefu:</b> '+uzoefu+'<br><b>Simu:</b> '+simu+'<br><b>Status:</b> ✅ Aliyehakikiwa'+distText;
+  document.getElementById('profileLocation').innerHTML = `<b>📍 LOCATION YA FUNDI:</b><br>📌 ${addr}<br>🌐 ${lat}, ${lng}${distText}<br><a class="map-link" href="https://www.google.com/maps?q=${lat},${lng}" target="_blank">🗺️ Ona Fundi Kwenye Google Maps</a><br>${userLat!==null ? `<a class="map-link" href="https://www.google.com/maps/dir/${userLat},${userLng}/${lat},${lng}" target="_blank">🚗 Ona Njia Kutoka Kwako Kwenda Kwa Fundi</a>` : ''}`;
+  document.getElementById('profileBox').scrollIntoView({behavior:'smooth'});
+}
+function openFundiMap(){ window.open(`https://www.google.com/maps?q=${currentFundiLat},${currentFundiLng}`,'_blank'); }
+function bookThisFundi(){ let msg=`Habari! Nataka kum-book Fundi ${currentFundi}. Location yangu: ${userAddr} (${userLat},${userLng}). Location ya Fundi: ${currentFundiAddr}. Tafadhali niunganisheni.`; window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank'); showNotif(); }
+function callFundi(){ window.location.href='tel:+255653998202'; }
+function tumaMteja(){ let j=document.getElementById('jinaMteja').value; let u=document.getElementById('ujuziMteja').value; let e=document.getElementById('eneoMteja').value; let t=document.getElementById('tarehe').value; let s=document.getElementById('saa').value; let m=document.getElementById('maelezoMteja').value; let loc = userLat ? `Location: ${userAddr} - https://www.google.com/maps?q=${userLat},${userLng}` : `Eneo: ${e}`; let msg=`Habari UJENZI! BOOKING MPYA%0A%0AJina: ${j}%0AFundi: ${u}%0A${loc}%0ATarehe: ${t}%0ASaa: ${s}%0AMaelezo: ${m}`; window.open(`https://wa.me/${WHATSAPP}?text=${msg}`,'_blank'); showNotif(); }
+function tumaFundi(){ let j=document.getElementById('jinaFundi').value; let s=document.getElementById('simuFundi').value; let u=document.getElementById('ujuziFundi').value; let e=document.getElementById('eneoFundi').value; let loc = fundiLat ? `Location ya Fundi: ${fundiAddr} - https://www.google.com/maps?q=${fundiLat},${fundiLng}` : `Eneo: ${e}`; let msg=`Habari! Nataka kujisajili kama FUNDI.%0A%0AJina: ${j}%0ASimu: ${s}%0AUjuzi: ${u}%0A${loc}%0A%0ANitakutumia NIDA yangu.`; window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank'); showNotif(); }
+function addReview(){ let j=document.getElementById('jinaReview').value || 'Mteja'; let n=document.getElementById('nyota').value; let m=document.getElementById('maoni').value; if(!m){ alert('Andika maoni kwanza'); return; } let div=document.createElement('div'); div.className='review'; div.innerHTML=`<b>${j}</b> ${n}<br>${m}`; document.getElementById('reviews').appendChild(div); alert('Asante kwa maoni yako! ⭐'); document.getElementById('maoni').value=''; }
+</script>
+</body>
+</html>
