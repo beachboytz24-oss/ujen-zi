@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUNDI CONNECT - Ujenzi Connection | Omba Fundi Tanzania Nzima</title>
+<link rel="icon" href="31549378-fd16-c0c4-5a95-2d10b713be01.jpeg">
+<link rel="manifest" href="data:application/manifest+json,[STRIPPED]
+<meta name="theme-color" content="#1e2f7a">
+<meta property="og:title" content="FUNDI CONNECT - Omba Fundi Tanzania Nzima">
+<meta property="og:image" content="31549378-fd16-c0c4-5a95-2d10b713be01.jpeg">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+body{background:#f4f6fb;color:#111}
+header{background:#1e2f7a;color:#fff;padding:14px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
+header img{width:58px;height:58px;border-radius:50%;object-fit:cover;border:3px solid #ff7a1a;background:#fff}
+header h1{font-size:20px;line-height:1.1}
+header h1 span{color:#ff7a1a;font-size:13px;letter-spacing:2px;display:block}
+header p{font-size:12px;opacity:.85}
+.hero{background:#1e2f7a;color:#fff;padding:28px 18px 34px;text-align:center;border-radius:0 0 24px 24px}
+.hero img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid #ff7a1a;background:#fff;margin-bottom:12px}
+.hero h2{font-size:26px;line-height:1.2}
+.hero h2 b{color:#ff7a1a}
+.hero p{margin:10px 0 18px;opacity:.9;font-size:15px}
+.btn{display:inline-block;padding:13px 20px;border-radius:30px;font-weight:800;text-decoration:none;font-size:15px;margin:4px}
+.btn-orange{background:#ff7a1a;color:#fff}
+.btn-white{background:#fff;color:#1e2f7a}
+.btn-green{background:#25D366;color:#fff}
+.btn-blue{background:#1e2f7a;color:#fff}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:-18px;position:relative}
+@media(max-width:600px){.cards{grid-template-columns:1fr 1fr}}
+.mini{background:#fff;border-radius:14px;padding:14px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.mini span{font-size:26px}
+.mini b{display:block;margin-top:6px;font-size:14px}
+.mini small{color:#666;font-size:12px}
+.form{background:#fff;border-radius:18px;padding:20px;margin-top:20px;box-shadow:0 2px 12px rgba(0,0,0,.07);border:2px solid #ff7a1a}
+.form h3{color:#1e2f7a;font-size:20px}
+.form p{font-size:14px;color:#555;margin-top:6px}
+.form label{font-size:13px;font-weight:700;display:block;margin:14px 0 5px}
+.form input,.form select,.form textarea{width:100%;padding:13px;border:2px solid #e5e7eb;border-radius:10px;font-size:15px;outline:none}
+.form button{width:100%;margin-top:16px;padding:15px;background:#25D366;color:#fff;border:none;border-radius:12px;font-weight:900;font-size:17px;cursor:pointer}
+.form2{background:#fff;border-radius:18px;padding:20px;margin-top:16px;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.form2 h3{color:#1e2f7a}
+.form2 label{font-size:13px;font-weight:700;display:block;margin:14px 0 5px}
+.form2 input,.form2 select{width:100%;padding:13px;border:2px solid #e5e7eb;border-radius:10px;font-size:15px;outline:none}
+.form2 button{width:100%;margin-top:16px;padding:14px;background:#1e2f7a;color:#fff;border:none;border-radius:12px;font-weight:900;font-size:16px;cursor:pointer}
+h3.sec{margin:22px 0 10px;font-size:19px;color:#1e2f7a}
+.gallery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:600px){.gallery{grid-template-columns:1fr 1fr}}
+.g-item{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.g-item img{width:100%;height:130px;object-fit:cover;display:block}
+.g-item div{padding:10px}
+.g-item b{font-size:14px}
+.g-item small{color:#666;font-size:12px;display:block}
+.location{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);margin-top:8px}
+.location iframe{width:100%;height:300px;border:0;display:block}
+.location .loc-info{padding:16px}
+.location .loc-info p{font-size:14px;color:#444;margin:6px 0}
+.mikoa{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+.mikoa span{background:#eef2ff;color:#1e2f7a;font-size:12px;font-weight:700;padding:6px 11px;border-radius:20px}
+.install{background:linear-gradient(135deg,#1e2f7a,#2a4bd7);color:#fff;border-radius:18px;padding:22px;text-align:center;margin-top:20px}
+.install img{width:70px;height:70px;border-radius:50%;object-fit:cover;border:3px solid #ff7a1a;background:#fff;margin-bottom:10px}
+.install h3{font-size:20px}
+.install p{font-size:14px;opacity:.9;margin:8px 0 14px}
+.install button{width:100%;padding:14px;background:#ff7a1a;color:#fff;border:none;border-radius:12px;font-weight:900;font-size:16px;cursor:pointer}
+.install small{display:block;margin-top:10px;font-size:12px;opacity:.8;line-height:1.5}
+footer{text-align:center;padding:22px 12px;color:#666;font-size:13px}
+footer img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid #ff7a1a;margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="31549378-fd16-c0c4-5a95-2d10b713be01.jpeg" alt="FUNDI CONNECT Logo">
+  <div>
+    <h1>FUNDI CONNECT <span>UJENZI CONNECTION</span></h1>
+    <p>Tanzania Nzima • 🇹🇿 • 0653 998 202</p>
+  </div>
+</header>
+
+<div class="hero">
+  <img src="31549378-fd16-c0c4-5a95-2d10b713be01.jpeg" alt="FUNDI CONNECT">
+  <h2>Pata Fundi wa Uhakika <b>Tanzania Nzima!</b></h2>
+  <p>Jisajili hapa chini kama Mteja, tutakutafutia Fundi wa karibu na wewe popote ulipo Tanzania - BURE!</p>
+  <p style="font-size:16px;font-weight:800;margin-top:6px">📞 WhatsApp: 0653 998 202</p>
+  <a class="btn btn-orange" href="#omba">📝 OMBA FUNDI SASA</a>
+  <a class="btn btn-green" href="https://wa.me/255653998202?text=Nahitaji%20Fundi%20Tanzania" target="_blank">💬 WHATSAPP 0653 998 202</a>
+  <a class="btn btn-white" href="#install">📱 INSTALL APP</a>
+</div>
+
+<div class="wrap">
+  <div class="cards">
+    <div class="mini"><span>🧱</span><b>Mjenzi</b><small>Ujenzi & Tofali</small></div>
+    <div class="mini"><span>⚡</span><b>Umeme</b><small>Wiring & Matengenezo</small></div>
+    <div class="mini"><span>🚿</span><b>Bomba</b><small>Maji & Vyoo</small></div>
+    <div class="mini"><span>🎨</span><b>Rangi</b><small>Kupaka Rangi</small></div>
+    <div class="mini"><span>🔧</span><b>Vyuma</b><small>Welding & Milango</small></div>
+    <div class="mini"><span>🏠</span><b>Mengine</b><small>Kazi Zote za Ujenzi</small></div>
+  </div>
+
+  <div class="form" id="omba">
+    <h3>📝 Jisajili Kama Mteja - Omba Fundi</h3>
+    <p>Jaza fomu hii, tutakupigia na kukutafutia Fundi wa uhakika karibu nawe popote Tanzania.</p>
+    <label>Jina Lako Kamili</label>
+    <input id="jinaMteja" placeholder="Mf: Juma Mwalimu">
+    <label>Namba ya Simu / WhatsApp</label>
+    <input id="simuMteja" placeholder="Mf: 0755000000">
+    <label>Mkoa Wako</label>
+    <select id="mkoaMteja">
+      <option>Dar es Salaam</option><option>Arusha</option><option>Mwanza</option><option>Dodoma</option><option>Mbeya</option><option>Morogoro</option><option>Tanga</option><option>Kilimanjaro</option><option>Songwe</option><option>Kagera</option><option>Shinyanga</option><option>Tabora</option><option>Kigoma</option><option>Ruvuma</option><option>Iringa</option><option>Njombe</option><option>Singida</option><option>Simiyu</option><option>Geita</option><option>Katavi</option><option>Rukwa</option><option>Lindi</option><option>Mtwara</option><option>Pwani</option><option>Mara</option><option>Manyara</option><option>Pemba</option><option>Unguja</option><option>Mengine</option>
+    </select>
+    <label>Eneo Lako - Mtaa / Wilaya</label>
+    <input id="eneoMteja" placeholder="Mf: Tegeta, Njiro, Nyamagana, Ilala...">
+    <label>Unahitaji Fundi wa Nini?</label>
+    <select id="kaziMteja">
+      <option>Mjenzi</option><option>Umeme</option><option>Bomba</option><option>Rangi</option><option>Vyuma</option><option>Tofali</option><option>Mengine</option>
+    </select>
+    <label>Eleza Kazi Yako Kidogo</label>
+    <textarea id="maelezo" rows="3" placeholder="Mf: Nahitaji fundi wa kupaka rangi nyumba ya vyumba 3..."></textarea>
+    <button onclick="ombaFundi()">✅ TUMA OMBI SASA - WHATSAPP 0653 998 202</button>
+  </div>
+
+  <h3 class="sec">📸 Picha za Kazi za Mafundi Wetu</h3>
+  <p style="font-size:14px;color:#555;margin-bottom:10px">Hizi ni baadhi ya kazi tulizozifanya Tanzania Nzima.</p>
+  <div class="gallery">
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80" alt="Ujenzi"><div><b>🧱 Ujenzi wa Nyumba</b><small>Dar es Salaam</small></div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&q=80" alt="Umeme"><div><b>⚡ Fundi wa Umeme</b><small>Arusha</small></div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&q=80" alt="Bomba"><div><b>🚿 Fundi wa Bomba</b><small>Mwanza</small></div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600&q=80" alt="Rangi"><div><b>🎨 Kupaka Rangi</b><small>Dodoma</small></div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80" alt="Vyuma"><div><b>🔧 Vyuma / Welding</b><small>Mbeya</small></div></div>
+    <div class="g-item"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80" alt="Tofali"><div><b>🏠 Tofali & Finishing</b><small>Morogoro</small></div></div>
+  </div>
+
+  <h3 class="sec">📍 Location Yetu - Tanzania Nzima 🇹🇿</h3>
+  <div class="location">
+    <iframe src="https://www.google.com/maps?q=Tanzania&output=embed" loading="lazy"></iframe>
+    <div class="loc-info">
+      <b style="font-size:16px;color:#1e2f7a">📍 FUNDI CONNECT - Tanzania Nzima</b>
+      <p>📌 <b>Huduma:</b> Tunafika popote Tanzania - Mikoa yote, Wilaya zote, Miji na Vijiji.</p>
+      <p>🕒 <b>Muda wa Kazi:</b> Jumatatu - Jumamosi: 7:00 Asubuhi - 6:00 Jioni | Jumapili: 9:00 - 1:00</p>
+      <p>📞 <b>Simu / WhatsApp:</b> 0653 998 202</p>
+      <p><b>Tunafika hapa:</b></p>
+      <div class="mikoa">
+        <span>Dar es Salaam</span><span>Arusha</span><span>Mwanza</span><span>Dodoma</span><span>Mbeya</span><span>Morogoro</span><span>Tanga</span><span>Kilimanjaro</span><span>Shinyanga</span><span>Tabora</span><span>Kigoma</span><span>Iringa</span><span>Mtwara</span><span>Lindi</span><span>Singida</span><span>Mara</span><span>Kagera</span><span>Pwani</span><span>Zanzibar</span><span>+ Mikoa Yote</span>
+      </div>
+      <a class="btn btn-blue" href="https://www.google.com/maps/search/?api=1&query=Tanzania" target="_blank">🗺️ FUNGUA RAMANI YA TANZANIA</a>
+      <a class="btn btn-green" href="https://wa.me/255653998202?text=Nahitaji%20Fundi%20Tanzania" target="_blank">💬 WHATSAPP 0653 998 202</a>
+    </div>
+  </div>
+
+  <div class="install" id="install">
+    <img src="31549378-fd16-c0c4-5a95-2d10b713be01.jpeg" alt="App Icon">
+    <h3>📱 Install FUNDI CONNECT App</h3>
+    <p>Install kama App kwenye simu yako - ifunguke haraka kama App nyingine, bila kuandika link kila siku!</p>
+    <button id="installBtn" onclick="installApp()">⬇️ INSTALL APP SASA</button>
+    <small id="installHelp"><b>Android (Chrome):</b> Bonyeza ⋮ juu kulia > <b>Add to Home screen</b> > Install<br><b>iPhone (Safari):</b> Bonyeza ⤴️ Share chini > <b>Add to Home Screen</b></small>
+  </div>
+
+  <div class="form2" id="jisajili-fundi">
+    <h3>✍️ Wewe ni Fundi? Jisajili Hapa - Tanzania Nzima</h3>
+    <p style="font-size:14px;color:#555">Jaza, tutakuwasiliana nawe ukipata kazi mkoani kwako.</p>
+    <label>Jina Lako Kamili</label>
+    <input id="jinaFundi" placeholder="Mf: Baraka Said">
+    <label>Kazi Yako / Ujuzi</label>
+    <select id="kaziFundi">
+      <option>Mjenzi</option><option>Umeme</option><option>Bomba</option><option>Rangi</option><option>Vyuma</option><option>Tofali</option><option>Mengine</option>
+    </select>
+    <label>Mkoa Wako</label>
+    <select id="mkoaFundi">
+      <option>Dar es Salaam</option><option>Arusha</option><option>Mwanza</option><option>Dodoma</option><option>Mbeya</option><option>Morogoro</option><option>Tanga</option><option>Kilimanjaro</option><option>Mengine</option>
+    </select>
+    <label>Eneo - Mtaa / Wilaya</label>
+    <input id="eneoFundi" placeholder="Mf: Tegeta, Njiro...">
+    <label>Namba ya WhatsApp</label>
+    <input id="simuFundi" placeholder="Mf: 0755000000">
+    <button onclick="sajiliFundi()">✅ JISAJILI KAMA FUNDI - TUMA KWA 0653 998 202</button>
+  </div>
+
+  <div style="text-align:center;margin:20px 0">
+    <a class="btn btn-green" href="https://wa.me/255653998202?text=Nahitaji%20Fundi%20Tanzania" target="_blank">💬 WASILIANA NASI WHATSAPP - 0653 998 202</a>
+  </div>
+</div>
+
+<footer>
+  <img src="31549378-fd16-c0c4-5a95-2d10b713be01.jpeg" alt="Logo"><br>
+  <b style="color:#1e2f7a">FUNDI CONNECT</b> • UJENZI CONNECTION<br>
+  📞 WhatsApp: 0653 998 202<br>
+  © 2026 Fundi Connect - Tanzania Nzima<br>
+  Tumejenga Tanzania Pamoja 🇹🇿
+</footer>
+
+<script>
+let deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; document.getElementById('installBtn').innerText = '⬇️ INSTALL APP SASA - BONYEZA HAPA'; });
+function installApp(){
+  if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt.userChoice.then((r)=>{ if(r.outcome==='accepted'){ alert('Asante! App imeshainstall!'); } deferredPrompt=null; }); }
+  else { alert('Kwenye Android: Bonyeza ⋮ juu kulia > Add to Home screen\nKwenye iPhone: Bonyeza Share > Add to Home Screen'); document.getElementById('installHelp').scrollIntoView({behavior:'smooth'}); }
+}
+function ombaFundi(){
+  var jina=document.getElementById('jinaMteja').value.trim();
+  var simu=document.getElementById('simuMteja').value.trim();
+  var mkoa=document.getElementById('mkoaMteja').value;
+  var eneo=document.getElementById('eneoMteja').value.trim();
+  var kazi=document.getElementById('kaziMteja').value;
+  var maelezo=document.getElementById('maelezo').value.trim();
+  if(!jina || !simu){ alert('Tafadhali jaza Jina na Namba ya Simu'); return; }
+  var msg = "Habari FUNDI CONNECT! Mimi ni MTEJA.%0A%0AJina: "+encodeURIComponent(jina)+"%0ASimu: "+encodeURIComponent(simu)+"%0AMkoa: "+encodeURIComponent(mkoa)+"%0AEneo: "+encodeURIComponent(eneo)+"%0ANahitaji Fundi wa: "+encodeURIComponent(kazi)+"%0AMaelezo: "+encodeURIComponent(maelezo);
+  window.open("https://wa.me/255653998202?text="+msg, "_blank");
+  alert('Asante '+jina+'! Ombi lako limetumwa kwa 0653 998 202. Tutakupigia hivi karibuni.');
+}
+function sajiliFundi(){
+  var jina=document.getElementById('jinaFundi').value.trim();
+  var simu=document.getElementById('simuFundi').value.trim();
+  var mkoa=document.getElementById('mkoaFundi').value;
+  var eneo=document.getElementById('eneoFundi').value.trim();
+  var kazi=document.getElementById('kaziFundi').value;
+  if(!jina || !simu){ alert('Tafadhali jaza Jina na Namba ya Simu'); return; }
+  var msg = "Habari FUNDI CONNECT! Mimi ni FUNDI nataka kujisajili.%0A%0AJina: "+encodeURIComponent(jina)+"%0ASimu: "+encodeURIComponent(simu)+"%0AMkoa: "+encodeURIComponent(mkoa)+"%0AEneo: "+encodeURIComponent(eneo)+"%0AKazi: "+encodeURIComponent(kazi);
+  window.open("https://wa.me/255653998202?text="+msg, "_blank");
+  alert('Asante '+jina+'! Umesajiliwa kama Fundi.');
+}
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('data:text/javascript,[STRIPPED] }
+</script>
+</body>
+</html>
